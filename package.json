@@ -1,0 +1,20 @@
+{
+  "name": "twitter-django-vue",
+  "version": "1.0.0",
+  "description": "A Twitter clone application built with Django and VueJS",
+  "main": "index.js",
+  "scripts": {
+    "commit": "git-cz"
+  },
+  "author": "Arnelle Balane <arnellebalane@gmail.com> (https://arnellebalane.com/)",
+  "license": "MIT",
+  "devDependencies": {
+    "commitizen": "2.10.1",
+    "cz-conventional-changelog": "2.1.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  }
+}
