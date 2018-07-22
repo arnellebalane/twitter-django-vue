@@ -11,3 +11,13 @@ class Profile(models.Model):
 
     def __unicode__(self):
         return self.fullname
+
+
+class Tweet(models.Model):
+    user = models.ForeignKey(
+        User, related_name='tweets', on_delete=models.CASCADE)
+    content = models.CharField(max_length=240)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __unicode__(self):
+        return self.content
