@@ -9,7 +9,7 @@ class Profile(models.Model):
     avatar_url = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.fullname
 
 
@@ -19,5 +19,5 @@ class Tweet(models.Model):
     content = models.CharField(max_length=240)
     created_at = models.DateTimeField(auto_now_add=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.content
