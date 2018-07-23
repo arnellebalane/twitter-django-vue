@@ -12,9 +12,12 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class ProfileSerializer(serializers.ModelSerializer):
+    email = serializers.ReadOnlyField(source='user.email')
+    username = serializers.ReadOnlyField(source='user.username')
+
     class Meta:
         model = Profile
-        fields = ('id', 'fullname', 'avatar_url',)
+        fields = ('id', 'fullname', 'avatar_url', 'email', 'username',)
 
 
 class TweetSerializer(serializers.ModelSerializer):
