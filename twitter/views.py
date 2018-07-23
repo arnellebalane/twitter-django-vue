@@ -1,3 +1,4 @@
+from django.views.generic import TemplateView
 from django.contrib.auth.models import User
 
 from rest_framework import status, viewsets
@@ -6,6 +7,10 @@ from rest_framework.views import APIView
 
 from .models import Profile, Tweet
 from .serializers import ProfileSerializer, TweetSerializer
+
+
+class FrontendView(TemplateView):
+    template_name = 'twitter/index.html'
 
 
 class RegisterView(APIView):
