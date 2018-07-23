@@ -5,12 +5,6 @@ from rest_framework import serializers
 from .models import Profile, Tweet
 
 
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ('id', 'username', 'email',)
-
-
 class ProfileSerializer(serializers.ModelSerializer):
     email = serializers.ReadOnlyField(source='user.email')
     username = serializers.ReadOnlyField(source='user.username')

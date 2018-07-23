@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .models import Profile, Tweet
-from .serializers import UserSerializer, ProfileSerializer, TweetSerializer
+from .serializers import ProfileSerializer, TweetSerializer
 
 
 class RegisterView(APIView):
@@ -25,11 +25,6 @@ class RegisterView(APIView):
                             status=status.HTTP_201_CREATED)
         return Response(profile_serializer.errors,
                         status=status.HTTP_400_BAD_REQUEST)
-
-
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
 
 
 class ProfileViewSet(viewsets.ModelViewSet):
