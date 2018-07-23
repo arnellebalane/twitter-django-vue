@@ -31,6 +31,7 @@ router.register(r'tweets', views.TweetViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('register/', views.RegisterView.as_view()),
     path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls')),
     path('api-token-auth/', obtain_jwt_token),
