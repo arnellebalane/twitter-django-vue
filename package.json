@@ -10,7 +10,9 @@
   "license": "MIT",
   "devDependencies": {
     "commitizen": "2.10.1",
-    "cz-conventional-changelog": "2.1.0"
+    "cz-conventional-changelog": "2.1.0",
+    "webpack": "4.16.2",
+    "webpack-cli": "3.1.0"
   },
   "config": {
     "commitizen": {
