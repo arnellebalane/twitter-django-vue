@@ -18,6 +18,8 @@ from django.urls import include, path
 
 from rest_framework.routers import DefaultRouter
 
+from rest_framework_jwt.views import obtain_jwt_token
+
 from twitter import views
 
 
@@ -31,4 +33,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls')),
+    path('api-token-auth/', obtain_jwt_token),
 ]
