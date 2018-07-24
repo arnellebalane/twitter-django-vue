@@ -4,13 +4,13 @@ import store from './store';
 import App from './components/App.vue';
 import './stylesheets/index.css';
 
+if (store.getters['auth/isLoggedIn']) {
+    store.dispatch('auth/getCurrentUser');
+}
+
 new Vue({
     el: '#app',
     router,
     store,
     render: h => h(App)
 });
-
-if (store.getters['auth/isLoggedIn']) {
-    store.dispatch('auth/getCurrentUser');
-}
