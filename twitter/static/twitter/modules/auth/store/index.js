@@ -2,7 +2,8 @@ import pick from 'lodash/pick';
 import axios from 'source/lib/axios';
 
 const state = {
-    token: localStorage.getItem('token')
+    token: localStorage.getItem('token'),
+    user: null
 };
 
 const getters = {};
@@ -18,6 +19,14 @@ const mutations = {
         state.token = null;
         localStorage.clearItem('token');
         delete axios.defaults.headers['Authorization'];
+    },
+
+    setUser(state, user) {
+        state.user = user;
+    },
+
+    clearUser(state) {
+        state.user = null;
     }
 };
 
