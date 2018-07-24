@@ -6,7 +6,11 @@ const state = {
     user: null
 };
 
-const getters = {};
+const getters = {
+    isLoggedIn(state) {
+        return state.token !== null;
+    }
+};
 
 const mutations = {
     setToken(state, token) {
@@ -50,7 +54,7 @@ const actions = {
 };
 
 if (state.token) {
-    axios.defaults.headers['Authorization'] = state.token;
+    axios.defaults.headers['Authorization'] = `JWT ${state.token}`;
 } else {
     delete axios.defaults.headers['Authorization'];
 }
