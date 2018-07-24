@@ -43,9 +43,6 @@ class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
 
-    def perform_create(self, serializer):
-        return serializer.save(user=self.request.user)
-
 
 class TweetViewSet(viewsets.ModelViewSet):
     queryset = Tweet.objects.all()
