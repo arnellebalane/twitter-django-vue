@@ -1,5 +1,6 @@
 <template>
     <div class="login-page auth-page">
+        <img src="~source/images/twitter.svg" alt="twitter logo" class="site-logo">
         <LoginForm />
     </div>
 </template>
