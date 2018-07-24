@@ -7,6 +7,10 @@ const routes = [{
     path: '/',
     component: () => import('source/pages/LoginPage.vue'),
     name: 'login'
+}, {
+    path: '/register',
+    component: () => import('source/pages/RegisterPage.vue'),
+    name: 'register'
 }];
 
 const router = new VueRouter({
