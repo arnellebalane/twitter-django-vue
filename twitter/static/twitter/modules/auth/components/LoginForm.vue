@@ -59,6 +59,8 @@
                 const [error] = await to(this.performLogin(this.formData));
                 if (error) {
                     this.error = error.response.data.non_field_errors[0];
+                } else {
+                    this.$emit('login');
                 }
 
                 this.loading = false;
