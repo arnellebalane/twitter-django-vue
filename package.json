@@ -4,7 +4,12 @@
   "description": "A Twitter clone application built with Django and VueJS",
   "main": "index.js",
   "scripts": {
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "clean": "rm -rf static-root/twitter",
+    "prebuild": "npm run clean",
+    "build": "webpack",
+    "prebuild:watch": "npm run clean",
+    "build:watch": "webpack --watch"
   },
   "author": "Arnelle Balane <arnellebalane@gmail.com> (https://arnellebalane.com/)",
   "license": "MIT",
