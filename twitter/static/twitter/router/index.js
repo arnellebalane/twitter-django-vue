@@ -6,15 +6,24 @@ Vue.use(VueRouter);
 const routes = [{
     path: '/',
     component: () => import('source/pages/FeedPage.vue'),
-    name: 'feed'
+    name: 'feed',
+    meta: {
+        loginRequired: true
+    }
 }, {
     path: '/login',
     component: () => import('source/pages/LoginPage.vue'),
-    name: 'login'
+    name: 'login',
+    meta: {
+        loginRequired: false
+    }
 }, {
     path: '/register',
     component: () => import('source/pages/RegisterPage.vue'),
-    name: 'register'
+    name: 'register',
+    meta: {
+        loginRequired: false
+    }
 }];
 
 const router = new VueRouter({
