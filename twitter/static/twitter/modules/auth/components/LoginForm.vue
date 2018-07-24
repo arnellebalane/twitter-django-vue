@@ -7,8 +7,8 @@
         <p v-if="error" class="error form-error">{{ error }}</p>
 
         <div class="field">
-            <label for="identifier">Email or username</label>
-            <input type="text" id="identifier" v-model="formData.identifier" autocomplete="email username" required>
+            <label for="username">Email or username</label>
+            <input type="text" id="username" v-model="formData.username" autocomplete="email username" required>
         </div>
 
         <div class="field">
@@ -39,7 +39,7 @@
         data() {
             return {
                 formData: {
-                    identifier: '',
+                    username: '',
                     password: ''
                 },
                 loading: false,
