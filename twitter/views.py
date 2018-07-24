@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .models import Profile, Tweet
-from .serializers import ProfileSerializer, TweetSerializer
+from .serializers import UserSerializer, ProfileSerializer, TweetSerializer
 
 
 class FrontendView(TemplateView):
