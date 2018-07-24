@@ -4,7 +4,7 @@
 
         <nav class="user-nav">
             <template v-if="user">
-                <img :src="user.avatar_url" :alt="user.fullname" class="user-avatar">
+                <img :src="user.avatar_url" :alt="user.fullname" class="user-avatar" @click="onLogout">
             </template>
             <template v-else>
                 <router-link :to="{name: 'login'}">Login</router-link>
@@ -15,12 +15,23 @@
 </template>
 
 <script>
-    import {mapState} from 'vuex';
+    import {mapState, mapActions} from 'vuex';
 
     export default {
         name: 'AppNavbar',
 
-        computed: mapState('auth', ['user'])
+        computed: mapState('auth', ['user']),
+
+        methods: {
+            ...mapActions('auth', ['performLogout']),
+
+            onLogout() {
+                this.performLogout();
+                this.$router.replace({
+                    name: 'landing'
+                });
+            }
+        }
     };
 </script>
 
