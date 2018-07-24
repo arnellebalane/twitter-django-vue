@@ -21,7 +21,7 @@ const mutations = {
 
     clearToken(state) {
         state.token = null;
-        localStorage.clearItem('token');
+        localStorage.removeItem('token');
         delete axios.defaults.headers['Authorization'];
     },
 
