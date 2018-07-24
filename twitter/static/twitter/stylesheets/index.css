@@ -1,0 +1,44 @@
+:root {
+    --primary-color: #2196f3;
+    --danger-color: #f44336;
+    --warning-color: #ff9800;
+    --info-color: #3f51b5;
+    --success-color: #4caf50;
+
+    --primary-text-color: #333;
+    --secondary-text-color: #888;
+
+    --gray-1: #f5f5f5;
+    --gray-2: #eee;
+    --gray-3: #ddd;
+    --gray-4: #bbb;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.4rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: var(--primary-text-color);
+    background-color: var(--gray-1);
+}
+
+a,
+input,
+button,
+textarea {
+    font: inherit;
+    color: inherit;
+}
