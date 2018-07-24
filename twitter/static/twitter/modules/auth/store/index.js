@@ -19,6 +19,10 @@ const mutations = {
 };
 
 const actions = {
+    async performRegister({commit}, data) {
+        const response = await axios.post('/api-auth/register/', data);
+    },
+
     async performLogin({commit}, data) {
         const {token} = await axios.post('/api-token-auth/', data);
         commit('setToken', token);
