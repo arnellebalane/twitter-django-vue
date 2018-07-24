@@ -3,7 +3,11 @@ import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
 
-const routes = [];
+const routes = [{
+    path: '/',
+    component: () => import('../pages/LoginPage.vue'),
+    name: 'login'
+}];
 
 const router = new VueRouter({
     routes,
