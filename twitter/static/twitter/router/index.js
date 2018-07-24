@@ -5,8 +5,8 @@ Vue.use(VueRouter);
 
 const routes = [{
     path: '/',
-    component: () => import('source/pages/LandingPage.vue'),
-    name: 'landing'
+    component: () => import('source/pages/FeedPage.vue'),
+    name: 'feed'
 }, {
     path: '/login',
     component: () => import('source/pages/LoginPage.vue'),
