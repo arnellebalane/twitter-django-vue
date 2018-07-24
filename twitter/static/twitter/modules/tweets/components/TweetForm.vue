@@ -14,7 +14,7 @@
 </template>
 
 <script>
-    import {mapState} from 'vuex';
+    import {mapState, mapActions} from 'vuex';
     import AppButton from 'source/components/AppButton.vue';
 
     export default {
@@ -53,8 +53,13 @@
         },
 
         methods: {
-            onSubmit() {
-                console.log('Submitted!');
+            ...mapActions('tweets', ['createTweet']),
+
+            async onSubmit() {
+                this.loading = true;
+
+                await this.createTweet(this.formData);
+                this.loading = false;
             }
         }
     };
