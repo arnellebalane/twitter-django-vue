@@ -1,11 +1,17 @@
 <template>
     <div class="login-page">
-        <h1>Login Page</h1>
+        <LoginForm />
     </div>
 </template>
 
 <script>
+    import LoginForm from '../modules/auth/components/LoginForm.vue';
+
     export default {
-        name: 'LoginPage'
+        name: 'LoginPage',
+
+        components: {
+            LoginForm
+        }
     };
 </script>
