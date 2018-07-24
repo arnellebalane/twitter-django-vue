@@ -50,6 +50,11 @@ const actions = {
     async getCurrentUser({commit}) {
         const user = await axios.get('/api/me/');
         commit('setUser', user);
+    },
+
+    performLogout({commit}) {
+        commit('clearToken');
+        commit('clearUser');
     }
 };
 
