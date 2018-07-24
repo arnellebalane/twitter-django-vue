@@ -5,7 +5,7 @@
 </template>
 
 <script>
-    import LoginForm from '../modules/auth/components/LoginForm.vue';
+    import LoginForm from 'source/modules/auth/components/LoginForm.vue';
 
     export default {
         name: 'LoginPage',
@@ -16,4 +16,4 @@
     };
 </script>
 
-<style scoped src="../stylesheets/shared/auth-pages.css"></style>
+<style scoped src="source/stylesheets/shared/auth-pages.css"></style>

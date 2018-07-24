@@ -27,7 +27,7 @@
 </template>
 
 <script>
-    import AppButton from '../../../components/AppButton.vue';
+    import AppButton from 'source/components/AppButton.vue';
 
     export default {
         name: 'LoginForm',
