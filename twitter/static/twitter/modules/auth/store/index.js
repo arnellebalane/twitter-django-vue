@@ -1,7 +1,7 @@
 import axios from 'source/lib/axios';
 
 const state = {
-    token: null
+    token: localStorage.getItem('token')
 };
 
 const getters = {};
@@ -9,10 +9,12 @@ const getters = {};
 const mutations = {
     setToken(state, token) {
         state.token = token;
+        localStorage.setItem('token', token);
     },
 
     clearToken(state) {
         state.token = null;
+        localStorage.clearItem('token');
     }
 };
 
