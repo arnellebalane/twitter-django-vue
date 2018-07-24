@@ -14,8 +14,14 @@
   "author": "Arnelle Balane <arnellebalane@gmail.com> (https://arnellebalane.com/)",
   "license": "MIT",
   "dependencies": {
+    "babel-loader": "8.0.0-beta.4",
+    "css-loader": "1.0.0",
+    "style-loader": "0.21.0",
+    "url-loader": "1.0.1",
     "vue": "2.5.16",
+    "vue-loader": "15.2.6",
     "vue-router": "3.0.1",
+    "vue-template-compiler": "2.5.16",
     "vuex": "3.0.1"
   },
   "devDependencies": {
