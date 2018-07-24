@@ -38,6 +38,8 @@
 </template>
 
 <script>
+    import {mapActions} from 'vuex';
+    import to from 'await-to-js';
     import AppButton from 'source/components/AppButton.vue';
 
     export default {
@@ -78,9 +80,18 @@
         },
 
         methods: {
-            onSubmit() {
+            ...mapActions('auth', ['performRegister']),
+
+            async onSubmit() {
                 this.loading = true;
-                setTimeout(() => this.loading = false, 1000);
+                this.error = null;
+
+                const [error] = await to(this.performRegister(this.formData));
+                if (error) {
+                    this.error = 'Something went wrong.';
+                }
+
+                this.loading = false;
             }
         }
     };
