@@ -1,6 +1,6 @@
 <template>
     <form class="tweet-form" @submit.prevent="onSubmit">
-        <img :src="user.avatar_url" :alt="user.fullname" class="user-avatar">
+        <img v-if="user" :src="user.avatar_url" :alt="user.fullname" class="user-avatar">
 
         <div class="tweet-fields">
             <textarea v-model="formData.content" :maxlength="contentMaxLength" placeholder="What's happening?"></textarea>
