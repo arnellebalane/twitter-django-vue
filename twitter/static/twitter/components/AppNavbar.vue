@@ -27,7 +27,7 @@
 
             onLogout() {
                 this.performLogout();
-                this.$router.replace({name: 'feed'});
+                this.$router.replace({name: 'login'});
             }
         }
     };
