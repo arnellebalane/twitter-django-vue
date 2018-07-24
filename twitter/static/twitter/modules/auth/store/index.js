@@ -36,9 +36,11 @@ const actions = {
         await dispatch('performLogin', pick(data, ['username', 'password']));
     },
 
-    async performLogin({commit}, data) {
+    async performLogin({commit, dispatch}, data) {
         const {token} = await axios.post('/api-token-auth/', data);
         commit('setToken', token);
+
+        await dispatch('getCurrentUser');
     },
 
     async getCurrentUser({commit}) {
