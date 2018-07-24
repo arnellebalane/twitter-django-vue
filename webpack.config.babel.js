@@ -32,6 +32,12 @@ export default {
         }]
     },
 
+    resolve: {
+        alias: {
+            source: path.resolve(__dirname, 'twitter/static/twitter')
+        }
+    },
+
     plugins: [
         new VueLoaderPlugin()
     ]
