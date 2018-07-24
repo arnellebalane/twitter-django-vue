@@ -22,7 +22,7 @@ export default {
             loader: 'babel-loader'
         }, {
             test: /\.css$/,
-            use: ['style-loader', 'babel-loader']
+            use: ['style-loader', 'css-loader']
         }, {
             test: /\.(png|jpe?g|gif|svg)$/,
             loader: 'url-loader',
