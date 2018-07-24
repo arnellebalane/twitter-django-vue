@@ -32,6 +32,13 @@ class RegisterView(APIView):
                         status=status.HTTP_400_BAD_REQUEST)
 
 
+class CurrentUserView(APIView):
+
+    def get(self, request):
+        serializer = ProfileSerializer(request.user.profile)
+        return Response(serializer.data)
+
+
 class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
