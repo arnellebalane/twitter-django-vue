@@ -10,11 +10,13 @@ const mutations = {
     setToken(state, token) {
         state.token = token;
         localStorage.setItem('token', token);
+        axios.defaults.headers['Authorization'] = `JWT ${token}`;
     },
 
     clearToken(state) {
         state.token = null;
         localStorage.clearItem('token');
+        delete axios.defaults.headers['Authorization'];
     }
 };
 
@@ -28,6 +30,12 @@ const actions = {
         commit('setToken', token);
     }
 };
+
+if (state.token) {
+    axios.defaults.headers['Authorization'] = state.token;
+} else {
+    delete axios.defaults.headers['Authorization'];
+}
 
 export default {
     namespaced: true,
