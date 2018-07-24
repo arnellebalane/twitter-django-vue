@@ -1,4 +1,5 @@
 import path from 'path';
+import VueLoaderPlugin from 'vue-loader/lib/plugin';
 
 export default {
     entry: './twitter/static/twitter/index.js',
@@ -29,5 +30,9 @@ export default {
                 limit: 1024
             }
         } ]
-    }
+    },
+
+    plugins: [
+        new VueLoaderPlugin()
+    ]
 };
