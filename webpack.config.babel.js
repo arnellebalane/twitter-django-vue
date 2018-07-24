@@ -2,7 +2,10 @@ import path from 'path';
 import VueLoaderPlugin from 'vue-loader/lib/plugin';
 
 export default {
-    entry: './twitter/static/twitter/index.js',
+    entry: [
+        '@babel/polyfill',
+        './twitter/static/twitter/index.js'
+    ],
 
     output: {
         path: path.resolve(__dirname, 'static-root/twitter'),
