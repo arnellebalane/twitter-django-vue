@@ -1,3 +1,4 @@
+import pick from 'lodash/pick';
 import axios from 'source/lib/axios';
 
 const state = {
@@ -21,8 +22,9 @@ const mutations = {
 };
 
 const actions = {
-    async performRegister({commit}, data) {
-        const response = await axios.post('/api-auth/register/', data);
+    async performRegister({dispatch}, data) {
+        await axios.post('/api-auth/register/', data);
+        await dispatch('performLogin', pick(data, ['username', 'password']));
     },
 
     async performLogin({commit}, data) {
