@@ -89,6 +89,8 @@
                 const [error] = await to(this.performRegister(this.formData));
                 if (error) {
                     this.error = 'Something went wrong.';
+                } else {
+                    this.$emit('register');
                 }
 
                 this.loading = false;
