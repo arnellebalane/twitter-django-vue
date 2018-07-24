@@ -10,3 +10,7 @@ new Vue({
     store,
     render: h => h(App)
 });
+
+if (store.getters['auth/isLoggedIn']) {
+    store.dispatch('auth/getCurrentUser');
+}
