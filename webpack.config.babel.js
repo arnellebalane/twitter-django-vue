@@ -8,13 +8,13 @@ export default {
         path: path.resolve(__dirname, 'static-root/twitter'),
         filename: 'index.js',
         chunkFilename: '[name].[hash].js',
-        publicPath: 'http://localhost:8003/'
+        publicPath: 'http://localhost:8003/twitter/'
     },
 
     mode: process.env.NODE_ENV || 'development',
 
     module: {
-        rules: [ {
+        rules: [{
             test: /\.vue$/,
             loader: 'vue-loader'
         }, {
@@ -29,7 +29,7 @@ export default {
             options: {
                 limit: 1024
             }
-        } ]
+        }]
     },
 
     plugins: [
