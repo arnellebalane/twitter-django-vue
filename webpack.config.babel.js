@@ -1,6 +1,8 @@
 import path from 'path';
 import VueLoaderPlugin from 'vue-loader/lib/plugin';
 
+const STATIC_URL = process.env.STATIC_URL || 'http://localhost:8001/';
+
 export default {
     entry: [
         '@babel/polyfill',
@@ -11,7 +13,7 @@ export default {
         path: path.resolve(__dirname, 'static-root/twitter'),
         filename: 'index.js',
         chunkFilename: '[name].[hash].js',
-        publicPath: 'http://localhost:8003/twitter/'
+        publicPath: `${STATIC_URL}twitter/`
     },
 
     mode: process.env.NODE_ENV || 'development',
