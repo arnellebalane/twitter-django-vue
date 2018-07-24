@@ -22,6 +22,8 @@ class ProfileSerializer(serializers.ModelSerializer):
 
 
 class TweetSerializer(serializers.ModelSerializer):
+    user = ProfileSerializer(source='user.profile', read_only=True)
+
     class Meta:
         model = Tweet
-        fields = ('id', 'content', 'created_at',)
+        fields = ('id', 'content', 'created_at', 'user',)
