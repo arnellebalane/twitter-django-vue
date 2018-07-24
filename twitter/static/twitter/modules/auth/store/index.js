@@ -26,6 +26,9 @@ const mutations = {
     },
 
     setUser(state, user) {
+        if (!user.avatar_url) {
+            user.avatar_url = require('source/images/default-avatar.png');
+        }
         state.user = user;
     },
 
