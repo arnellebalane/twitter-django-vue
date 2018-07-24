@@ -1,0 +1,14 @@
+.auth-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.auth-page .site-logo {
+    width: 4.2rem;
+    height: 4.2rem;
+    margin-top: -6.6rem;
+    margin-bottom: 2.4rem;
+}

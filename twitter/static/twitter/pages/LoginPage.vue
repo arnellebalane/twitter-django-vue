@@ -1,5 +1,5 @@
 <template>
-    <div class="login-page">
+    <div class="login-page auth-page">
         <LoginForm />
     </div>
 </template>
@@ -15,3 +15,5 @@
         }
     };
 </script>
+
+<style scoped src="../stylesheets/shared/auth-pages.css"></style>
