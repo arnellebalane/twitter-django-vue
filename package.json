@@ -13,6 +13,11 @@
   },
   "author": "Arnelle Balane <arnellebalane@gmail.com> (https://arnellebalane.com/)",
   "license": "MIT",
+  "dependencies": {
+    "vue": "2.5.16",
+    "vue-router": "3.0.1",
+    "vuex": "3.0.1"
+  },
   "devDependencies": {
     "@babel/core": "7.0.0-beta.54",
     "@babel/preset-env": "7.0.0-beta.54",
@@ -29,7 +34,7 @@
   },
   "babel": {
     "presets": [
-        "@babel/preset-env"
+      "@babel/preset-env"
     ]
   }
 }
