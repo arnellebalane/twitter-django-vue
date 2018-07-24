@@ -1,7 +1,7 @@
 <template>
     <div class="login-page auth-page">
         <img src="~source/images/twitter.svg" alt="twitter logo" class="site-logo">
-        <LoginForm />
+        <LoginForm @login="onLogin" />
     </div>
 </template>
 
@@ -13,6 +13,14 @@
 
         components: {
             LoginForm
+        },
+
+        methods: {
+            onLogin() {
+                this.$router.replace({
+                    name: 'landing'
+                });
+            }
         }
     };
 </script>
