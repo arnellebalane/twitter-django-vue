@@ -1,6 +1,8 @@
 <template>
     <div class="auth-form-field">
         <label :for="id">{{ label }}</label>
+        <p v-if="error">{{ error }}</p>
+
         <input :id="id" v-model="inputValue" v-bind="$attrs" v-on="listeners">
         <slot></slot>
     </div>
@@ -20,7 +22,8 @@
             value: {
                 type: String,
                 required: true
-            }
+            },
+            error: String
         },
 
         computed: {
@@ -58,5 +61,11 @@
         padding: 0.5em;
         border: 1px solid var(--gray-3);
         border-radius: 3px;
+    }
+
+    p {
+        margin-top: -0.4rem;
+        margin-bottom: 0.4rem;
+        color: var(--danger-color);
     }
 </style>
