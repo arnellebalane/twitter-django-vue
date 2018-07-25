@@ -11,7 +11,7 @@
                     </h2>
                 </router-link>
                 <span class="middot">&middot;</span>
-                <time :datetime="tweet.created_at">{{timeago}}</time>
+                <AppTimeago :date="tweet.created_at" />
             </header>
 
             <main class="content-body">
@@ -22,49 +22,19 @@
 </template>
 
 <script>
-    import distanceInWords from 'date-fns/distance_in_words';
-
-    let instances = [];
-
-    setInterval(() => {
-        instances.forEach(instance => instance.computeTimeago());
-    }, 1000 * 10);
+    import AppTimeago from 'source/components/AppTimeago.vue';
 
     export default {
         name: 'TweetListItem',
+
+        components: {
+            AppTimeago
+        },
 
         props: {
             tweet: {
                 type: Object,
                 required: true
-            }
-        },
-
-        data() {
-            return {
-                timeago: '1s'
-            };
-        },
-
-        computed: {
-            createdAt() {
-                return new Date(this.tweet.created_at);
-            }
-        },
-
-        created() {
-            this.computeTimeago();
-            instances.push(this);
-        },
-
-        destroyed() {
-            instances = instances.filter(instance => instance !== this);
-        },
-
-        methods: {
-            computeTimeago() {
-                const now = new Date();
-                this.timeago = distanceInWords(this.createdAt, now);
             }
         }
     };
