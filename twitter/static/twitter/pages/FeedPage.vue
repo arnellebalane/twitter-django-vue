@@ -9,6 +9,7 @@
 
 <script>
     import {mapActions} from 'vuex';
+    import eventBus from 'source/lib/event-bus';
     import TweetForm from 'source/modules/tweets/components/TweetForm.vue';
     import TweetList from 'source/modules/tweets/components/TweetList.vue';
 
@@ -27,8 +28,14 @@
         },
 
         async created() {
+            eventBus.$on('tweets:create', this.addTweet);
+
             const tweets = await this.fetchTweets();
             tweets.forEach(this.addTweet);
+        },
+
+        destroyed() {
+            eventBus.$off('tweets:create', this.addTweet);
         },
 
         methods: {
