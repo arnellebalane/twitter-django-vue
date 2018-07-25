@@ -1,18 +1,18 @@
 <template>
     <div class="register-page auth-page">
         <img src="~source/images/twitter.svg" alt="twitter logo" class="site-logo">
-        <RegisterForm @register="onRegister" />
+        <AuthRegisterForm @register="onRegister" />
     </div>
 </template>
 
 <script>
-    import RegisterForm from 'source/modules/auth/components/RegisterForm.vue';
+    import AuthRegisterForm from 'source/modules/auth/components/AuthRegisterForm.vue';
 
     export default {
         name: 'RegisterPage',
 
         components: {
-            RegisterForm
+            AuthRegisterForm
         },
 
         methods: {

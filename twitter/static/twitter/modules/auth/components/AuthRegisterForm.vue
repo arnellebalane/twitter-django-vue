@@ -1,5 +1,5 @@
 <template>
-    <form class="register-form auth-form" @submit.prevent="onSubmit">
+    <form class="auth-register-form auth-form" @submit.prevent="onSubmit">
         <header>
             <h1>Create your account</h1>
         </header>
@@ -60,7 +60,7 @@
     import AuthFormField from './AuthFormField.vue';
 
     export default {
-        name: 'RegisterForm',
+        name: 'AuthRegisterForm',
 
         components: {
             AppButton,
