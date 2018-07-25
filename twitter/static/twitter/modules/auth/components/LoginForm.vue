@@ -6,8 +6,22 @@
 
         <p v-if="error" class="error form-error">{{ error }}</p>
 
-        <AuthFormField v-model="formData.username" label="Email or username" type="text" autocomplete="email username" required />
-        <AuthFormField v-model="formData.password" label="Password" type="password" autocomplete="current-password" required />
+        <AuthFormField
+            v-model="formData.username"
+            :error="formErrors.username"
+            label="Email or username"
+            type="text"
+            autocomplete="email username"
+            required
+        />
+        <AuthFormField
+            v-model="formData.password"
+            :error="formErrors.password"
+            label="Password"
+            type="password"
+            autocomplete="current-password"
+            required
+        />
 
         <footer>
             <AppButton :loading="loading">Login</AppButton>
@@ -39,6 +53,10 @@
                     username: '',
                     password: ''
                 },
+                formErrors: {
+                    username: '',
+                    password: ''
+                },
                 loading: false,
                 error: null
             };
@@ -53,7 +71,15 @@
 
                 const [error] = await to(this.performLogin(this.formData));
                 if (error) {
-                    this.error = error.response.data.non_field_errors[0];
+                    const data = error.response.data;
+                    if (data.non_field_errors) {
+                        this.error = data.non_field_errors[0];
+                        delete data.non_field_errors;
+                    }
+
+                    for (let key in data) {
+                        this.$set(this.formErrors, key, data[key][0]);
+                    }
                 } else {
                     this.$emit('login');
                 }

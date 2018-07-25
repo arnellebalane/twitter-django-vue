@@ -6,12 +6,42 @@
 
         <p v-if="error" class="error form-error">{{ error }}</p>
 
-        <AuthFormField v-model="formData.fullname" label="Full name" type="text" autocomplete="name" required />
-        <AuthFormField v-model="formData.username" :maxlength="usernameMaxLength" class="username-field" label="Username" type="text" autocomplete="username" required>
+        <AuthFormField
+            v-model="formData.fullname"
+            :error="formErrors.fullname"
+            label="Full name"
+            type="text"
+            autocomplete="name"
+            required
+        />
+        <AuthFormField
+            v-model="formData.username"
+            :error="formErrors.username"
+            :maxlength="usernameMaxLength"
+            class="username-field"
+            label="Username"
+            type="text"
+            autocomplete="username"
+            required
+        >
             <span :class="usernameRemainingLengthClass">{{usernameRemainingLength}}/{{usernameMaxLength}}</span>
         </AuthFormField>
-        <AuthFormField v-model="formData.email" label="Email" type="email" autocomplete="email" required />
-        <AuthFormField v-model="formData.password" label="Password" type="password" autocomplete="new-password" required />
+        <AuthFormField
+            v-model="formData.email"
+            :error="formErrors.email"
+            label="Email"
+            type="email"
+            autocomplete="email"
+            required
+        />
+        <AuthFormField
+            v-model="formData.password"
+            :error="formErrors.password"
+            label="Password"
+            type="password"
+            autocomplete="new-password"
+            required
+        />
 
         <footer>
             <AppButton :loading="loading">Create Account</AppButton>
@@ -40,6 +70,12 @@
         data() {
             return {
                 formData: {
+                    fullname: '',
+                    username: '',
+                    email: '',
+                    password: ''
+                },
+                formErrors: {
                     fullname: '',
                     username: '',
                     email: '',
@@ -76,7 +112,15 @@
 
                 const [error] = await to(this.performRegister(this.formData));
                 if (error) {
-                    this.error = 'Something went wrong.';
+                    const data = error.response.data;
+                    if (data.non_field_errors) {
+                        this.error = data.non_field_errors[0];
+                        delete data.non_field_errors;
+                    }
+
+                    for (let key in data) {
+                        this.$set(this.formErrors, key, data[key][0]);
+                    }
                 } else {
                     this.$emit('register');
                 }
