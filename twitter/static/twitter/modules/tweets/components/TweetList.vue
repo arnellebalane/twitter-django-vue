@@ -1,12 +1,18 @@
 <template>
     <div class="tweet-list">
-        <h1>Tweet List</h1>
+        <TweetListItem v-for="tweet in tweets" :key="tweet.id" :tweet="tweet"/>
     </div>
 </template>
 
 <script>
+    import TweetListItem from './TweetListItem.vue';
+
     export default {
         name: 'TweetList',
+
+        components: {
+            TweetListItem
+        },
 
         props: {
             tweets: {
