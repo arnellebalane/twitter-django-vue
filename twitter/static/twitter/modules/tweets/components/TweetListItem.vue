@@ -13,7 +13,7 @@
                 <span class="middot">&nbsp;&middot;&nbsp;</span>
                 <AppTimeago :date="tweet.created_at" />
 
-                <button v-if="isOwnTweet" class="delete-btn">&times;</button>
+                <button v-if="isOwnTweet" class="delete-btn" @click="deleteTweet(tweet.id)">&times;</button>
             </header>
 
             <main class="content-body">
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-    import {mapState} from 'vuex';
+    import {mapState, mapActions} from 'vuex';
     import AppTimeago from 'source/components/AppTimeago.vue';
 
     export default {
@@ -47,7 +47,9 @@
             isOwnTweet() {
                 return this.tweet.user.id === this.user.id;
             }
-        }
+        },
+
+        methods: mapActions('tweets', ['deleteTweet'])
     };
 </script>
 
