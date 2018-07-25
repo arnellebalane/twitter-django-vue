@@ -38,6 +38,7 @@
     import to from 'await-to-js';
     import AppButton from 'source/components/AppButton.vue';
     import AuthFormField from './AuthFormField.vue';
+    import AuthFormMixin from '../mixins/AuthForm';
 
     export default {
         name: 'AuthLoginForm',
@@ -47,15 +48,15 @@
             AuthFormField
         },
 
+        mixins: [AuthFormMixin],
+
         data() {
             return {
                 formData: {
                     username: '',
                     password: ''
                 },
-                formErrors: {},
-                loading: false,
-                error: null
+                loading: false
             };
         },
 
@@ -68,25 +69,12 @@
 
                 const [error] = await to(this.performLogin(this.formData));
                 if (error) {
-                    const data = error.response.data;
-                    if (data.non_field_errors) {
-                        this.error = data.non_field_errors[0];
-                        delete data.non_field_errors;
-                    }
-
-                    for (let key in data) {
-                        this.$set(this.formErrors, key, data[key][0]);
-                    }
+                    this.handleFormError(error);
                 } else {
                     this.$emit('login');
                 }
 
                 this.loading = false;
-            },
-
-            resetFormErrors() {
-                this.formErrors = {};
-                this.error = null;
             }
         }
     };
