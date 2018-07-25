@@ -15,21 +15,8 @@ h1 {
     font-size: 1.8rem;
 }
 
-div {
+.auth-form-field {
     margin: 1.2rem 0;
-}
-
-label {
-    display: block;
-    margin-bottom: 0.4rem;
-    color: #888;
-}
-
-input {
-    width: 100%;
-    padding: 0.5em;
-    border: 1px solid var(--gray-3);
-    border-radius: 3px;
 }
 
 footer {
