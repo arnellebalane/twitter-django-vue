@@ -12,6 +12,10 @@ const mutations = {
             tweet.user.avatar_url = require('source/images/default-avatar.png');
         }
         state.tweets = [tweet, ...state.tweets];
+    },
+
+    clearTweets(state) {
+        state.tweets = [];
     }
 };
 
