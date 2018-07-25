@@ -19,7 +19,7 @@ class RegisterView(APIView):
         user_serializer = UserSerializer(data=request.data)
         profile_serializer = ProfileSerializer(data=request.data)
 
-        if user_serializer.is_valid() and profile_serializer.is_valid():
+        if profile_serializer.is_valid() and user_serializer.is_valid():
             user = User.objects.create_user(
                 user_serializer.validated_data.get('username'),
                 user_serializer.validated_data.get('email'),
@@ -28,8 +28,8 @@ class RegisterView(APIView):
 
             return Response(profile_serializer.data,
                             status=status.HTTP_201_CREATED)
-        return Response(profile_serializer.errors,
-                        status=status.HTTP_400_BAD_REQUEST)
+        errors = {**profile_serializer.errors, **user_serializer.errors}
+        return Response(errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class CurrentUserView(APIView):
