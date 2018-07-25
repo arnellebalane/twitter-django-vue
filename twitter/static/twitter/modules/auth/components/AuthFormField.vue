@@ -2,6 +2,7 @@
     <div class="auth-form-field">
         <label :for="id">{{ label }}</label>
         <input :id="id" v-model="inputValue" v-bind="$attrs" v-on="listeners">
+        <slot></slot>
     </div>
 </template>
 
