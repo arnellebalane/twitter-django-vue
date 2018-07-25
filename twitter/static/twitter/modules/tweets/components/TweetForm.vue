@@ -71,6 +71,7 @@
     .tweet-form {
         display: flex;
         padding: 1.2rem;
+        padding-left: 3.2rem;
         background-color: var(--gray-2);
     }
 
