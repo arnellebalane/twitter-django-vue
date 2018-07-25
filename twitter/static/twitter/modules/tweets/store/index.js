@@ -1,4 +1,5 @@
 import axios from 'source/lib/axios';
+import eventBus from 'source/lib/event-bus';
 
 const state = {};
 
@@ -11,8 +12,10 @@ const actions = {
         return axios.get('/api/tweets/');
     },
 
-    createTweet(context, data) {
-        return axios.post('/api/tweets/', data);
+    async createTweet(context, data) {
+        const tweet = await axios.post('/api/tweets/', data);
+        eventBus.$emit('tweets:create', tweet);
+        return tweet;
     }
 };
 
