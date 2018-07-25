@@ -6,26 +6,12 @@
 
         <p v-if="error" class="error form-error">{{ error }}</p>
 
-        <div class="field">
-            <label for="fullname">Full name</label>
-            <input type="text" id="fullname" v-model="formData.fullname" autocomplete="name" required>
-        </div>
-
-        <div class="field username-field">
-            <label for="username">Username</label>
-            <input type="text" id="username" v-model="formData.username" autocomplete="username" :maxlength="usernameMaxLength" required>
+        <AuthFormField v-model="formData.fullname" label="Full name" type="text" autocomplete="name" required />
+        <AuthFormField v-model="formData.username" :maxlength="usernameMaxLength" class="username-field" label="Username" type="text" autocomplete="username" required>
             <span :class="usernameRemainingLengthClass">{{usernameRemainingLength}}/{{usernameMaxLength}}</span>
-        </div>
-
-        <div class="field">
-            <label for="email">Email</label>
-            <input type="email" id="email" v-model="formData.email" autocomplete="email" required>
-        </div>
-
-        <div class="field">
-            <label for="password">Password</label>
-            <input type="password" id="password" v-model="formData.password" autocomplete="new-password" required>
-        </div>
+        </AuthFormField>
+        <AuthFormField v-model="formData.email" label="Email" type="email" autocomplete="email" required />
+        <AuthFormField v-model="formData.password" label="Password" type="password" autocomplete="new-password" required />
 
         <footer>
             <AppButton :loading="loading">Create Account</AppButton>
@@ -41,12 +27,14 @@
     import {mapActions} from 'vuex';
     import to from 'await-to-js';
     import AppButton from 'source/components/AppButton.vue';
+    import AuthFormField from './AuthFormField.vue';
 
     export default {
         name: 'RegisterForm',
 
         components: {
-            AppButton
+            AppButton,
+            AuthFormField
         },
 
         data() {
