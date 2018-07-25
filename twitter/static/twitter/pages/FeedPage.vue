@@ -7,6 +7,7 @@
 </template>
 
 <script>
+    import {mapActions} from 'vuex';
     import TweetForm from 'source/modules/tweets/components/TweetForm.vue';
 
     export default {
@@ -14,7 +15,13 @@
 
         components: {
             TweetForm
-        }
+        },
+
+        created() {
+            this.fetchTweets();
+        },
+
+        methods: mapActions('tweets', ['fetchTweets'])
     };
 </script>
 
