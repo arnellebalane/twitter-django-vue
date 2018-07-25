@@ -137,4 +137,6 @@ REST_FRAMEWORK = {
     ],
 }
 
-JWT_EXPIRATION_DELTA = timedelta(days=1)
+JWT_AUTH = {
+    'JWT_EXPIRATION_DELTA': timedelta(days=1),
+}
