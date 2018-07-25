@@ -6,15 +6,8 @@
 
         <p v-if="error" class="error form-error">{{ error }}</p>
 
-        <div class="field">
-            <label for="username">Email or username</label>
-            <input type="text" id="username" v-model="formData.username" autocomplete="email username" required>
-        </div>
-
-        <div class="field">
-            <label for="password">Password</label>
-            <input type="password" id="password" v-model="formData.password" autocomplete="current-password" required>
-        </div>
+        <AuthFormField v-model="formData.username" label="Email or username" type="text" autocomplete="email username" required />
+        <AuthFormField v-model="formData.password" label="Password" type="password" autocomplete="current-password" required />
 
         <footer>
             <AppButton :loading="loading">Login</AppButton>
@@ -30,12 +23,14 @@
     import {mapActions} from 'vuex';
     import to from 'await-to-js';
     import AppButton from 'source/components/AppButton.vue';
+    import AuthFormField from './AuthFormField.vue';
 
     export default {
         name: 'LoginForm',
 
         components: {
-            AppButton
+            AppButton,
+            AuthFormField
         },
 
         data() {
