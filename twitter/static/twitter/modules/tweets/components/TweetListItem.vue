@@ -10,8 +10,10 @@
                         <span class="username">@{{ tweet.user.username }}</span>
                     </h2>
                 </router-link>
-                <span class="middot">&middot;</span>
+                <span class="middot">&nbsp;&middot;&nbsp;</span>
                 <AppTimeago :date="tweet.created_at" />
+
+                <button v-if="isOwnTweet" class="delete-btn">&times;</button>
             </header>
 
             <main class="content-body">
@@ -22,6 +24,7 @@
 </template>
 
 <script>
+    import {mapState} from 'vuex';
     import AppTimeago from 'source/components/AppTimeago.vue';
 
     export default {
@@ -35,6 +38,14 @@
             tweet: {
                 type: Object,
                 required: true
+            }
+        },
+
+        computed: {
+            ...mapState('auth', ['user']),
+
+            isOwnTweet() {
+                return this.tweet.user.id === this.user.id;
             }
         }
     };
@@ -59,6 +70,15 @@
         object-position: center center;
         border-radius: 50%;
         margin-right: 1.2rem;
+    }
+
+    .content {
+        flex-grow: 1;
+    }
+
+    .content-header {
+        display: flex;
+        align-items: baseline;
     }
 
     .content-header a {
@@ -90,13 +110,30 @@
     }
 
     .content-header .middot {
-        display: inline-block;
-        margin: 0 0.25ch;
+        padding: 0 0.25ch;
         color: var(--secondary-text-color);
     }
 
     .content-header time {
         color: var(--secondary-text-color);
+    }
+
+    .content-header .delete-btn {
+        width: 1.9rem;
+        height: 1.9rem;
+        border: none;
+        border-radius: 50%;
+        margin-left: auto;
+        line-height: 1.5rem;
+        text-align: center;
+        color: var(--gray-4);
+        background: none;
+        cursor: pointer;
+    }
+
+    .content-header .delete-btn:hover,
+    .content-header .delete-btn:focus {
+        background-color: var(--gray-1);
     }
 
     .content-body {
