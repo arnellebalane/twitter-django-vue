@@ -1,5 +1,5 @@
 <template>
-    <form class="login-form auth-form" @submit.prevent="onSubmit">
+    <form class="auth-login-form auth-form" @submit.prevent="onSubmit">
         <header>
             <h1>Login to your account</h1>
         </header>
@@ -40,7 +40,7 @@
     import AuthFormField from './AuthFormField.vue';
 
     export default {
-        name: 'LoginForm',
+        name: 'AuthLoginForm',
 
         components: {
             AppButton,

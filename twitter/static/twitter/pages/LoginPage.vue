@@ -1,18 +1,18 @@
 <template>
     <div class="login-page auth-page">
         <img src="~source/images/twitter.svg" alt="twitter logo" class="site-logo">
-        <LoginForm @login="onLogin" />
+        <AuthLoginForm @login="onLogin" />
     </div>
 </template>
 
 <script>
-    import LoginForm from 'source/modules/auth/components/LoginForm.vue';
+    import AuthLoginForm from 'source/modules/auth/components/AuthLoginForm.vue';
 
     export default {
         name: 'LoginPage',
 
         components: {
-            LoginForm
+            AuthLoginForm
         },
 
         methods: {
