@@ -1,33 +1,18 @@
 import axios from 'source/lib/axios';
 
-const state = {
-    tweets: []
-};
+const state = {};
 
 const getters = {};
 
-const mutations = {
-    addTweet(state, tweet) {
-        if (!tweet.user.avatar_url) {
-            tweet.user.avatar_url = require('source/images/default-avatar.png');
-        }
-        state.tweets = [tweet, ...state.tweets];
-    },
-
-    clearTweets(state) {
-        state.tweets = [];
-    }
-};
+const mutations = {};
 
 const actions = {
-    async fetchTweets({commit}) {
-        const tweets = await axios.get('/api/tweets/');
-        tweets.forEach(tweet => commit('addTweet', tweet));
+    fetchTweets(context) {
+        return axios.get('/api/tweets/');
     },
 
-    async createTweet({commit}, data) {
-        const tweet = await axios.post('/api/tweets/', data);
-        commit('addTweet', tweet);
+    createTweet(context, data) {
+        return axios.post('/api/tweets/', data);
     }
 };
 
