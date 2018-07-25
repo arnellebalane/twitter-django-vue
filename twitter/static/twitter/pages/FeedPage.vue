@@ -24,7 +24,8 @@
             return {
                 tweets: [],
                 eventBusCallbacks: {
-                    'tweets:create': this.addTweet
+                    'tweets:create': this.addTweet,
+                    'tweets:delete': this.deleteTweet
                 }
             };
         },
@@ -42,6 +43,10 @@
                     tweet.user.avatar_url = require('source/images/default-avatar.png');
                 }
                 this.tweets = [tweet, ...this.tweets];
+            },
+
+            deleteTweet(id) {
+                this.tweets = this.tweets.filter(tweet => tweet.id !== id);
             }
         }
     };
