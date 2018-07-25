@@ -8,7 +8,7 @@
 </template>
 
 <script>
-    import {mapState, mapActions} from 'vuex';
+    import {mapActions} from 'vuex';
     import TweetForm from 'source/modules/tweets/components/TweetForm.vue';
     import TweetList from 'source/modules/tweets/components/TweetList.vue';
 
@@ -20,13 +20,27 @@
             TweetList
         },
 
-        computed: mapState('tweets', ['tweets']),
-
-        created() {
-            this.fetchTweets();
+        data() {
+            return {
+                tweets: []
+            };
         },
 
-        methods: mapActions('tweets', ['fetchTweets'])
+        async created() {
+            const tweets = await this.fetchTweets();
+            tweets.forEach(this.addTweet);
+        },
+
+        methods: {
+            ...mapActions('tweets', ['fetchTweets']),
+
+            addTweet(tweet) {
+                if (!tweet.user.avatar_url) {
+                    tweet.user.avatar_url = require('source/images/default-avatar.png');
+                }
+                this.tweets = [tweet, ...this.tweets];
+            }
+        }
     };
 </script>
 
