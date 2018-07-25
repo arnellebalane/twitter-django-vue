@@ -59,6 +59,8 @@
                 this.loading = true;
 
                 await this.createTweet(this.formData);
+
+                this.formData.content = '';
                 this.loading = false;
             }
         }
