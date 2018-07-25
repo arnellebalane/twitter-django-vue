@@ -2,20 +2,25 @@
     <div class="feed-page">
         <div class="wrapper">
             <TweetForm />
+            <TweetList :tweets="tweets" />
         </div>
     </div>
 </template>
 
 <script>
-    import {mapActions} from 'vuex';
+    import {mapState, mapActions} from 'vuex';
     import TweetForm from 'source/modules/tweets/components/TweetForm.vue';
+    import TweetList from 'source/modules/tweets/components/TweetList.vue';
 
     export default {
         name: 'FeedPage',
 
         components: {
-            TweetForm
+            TweetForm,
+            TweetList
         },
+
+        computed: mapState('tweets', ['tweets']),
 
         created() {
             this.fetchTweets();
