@@ -16,6 +16,11 @@ const actions = {
         const tweet = await axios.post('/api/tweets/', data);
         eventBus.$emit('tweets:create', tweet);
         return tweet;
+    },
+
+    async deleteTweet(context, id) {
+        const tweet = await axios.delete(`/api/tweets/${id}/`);
+        eventBus.$emit('tweets:delete', id);
     }
 };
 
