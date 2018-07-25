@@ -8,6 +8,9 @@ const getters = {};
 
 const mutations = {
     addTweet(state, tweet) {
+        if (!tweet.user.avatar_url) {
+            tweet.user.avatar_url = require('source/images/default-avatar.png');
+        }
         state.tweets = [tweet, ...state.tweets];
     }
 };
