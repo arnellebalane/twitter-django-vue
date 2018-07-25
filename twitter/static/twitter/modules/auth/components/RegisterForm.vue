@@ -75,12 +75,7 @@
                     email: '',
                     password: ''
                 },
-                formErrors: {
-                    fullname: '',
-                    username: '',
-                    email: '',
-                    password: ''
-                },
+                formErrors: {},
                 usernameMaxLength: 30,
                 loading: false,
                 error: null
@@ -108,7 +103,7 @@
 
             async onSubmit() {
                 this.loading = true;
-                this.error = null;
+                this.resetFormErrors();
 
                 const [error] = await to(this.performRegister(this.formData));
                 if (error) {
@@ -126,6 +121,11 @@
                 }
 
                 this.loading = false;
+            },
+
+            resetFormErrors() {
+                this.formErrors = {};
+                this.error = null;
             }
         }
     };

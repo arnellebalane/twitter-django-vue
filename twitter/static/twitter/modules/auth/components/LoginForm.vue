@@ -53,10 +53,7 @@
                     username: '',
                     password: ''
                 },
-                formErrors: {
-                    username: '',
-                    password: ''
-                },
+                formErrors: {},
                 loading: false,
                 error: null
             };
@@ -67,7 +64,7 @@
 
             async onSubmit() {
                 this.loading = true;
-                this.error = null;
+                this.resetFormErrors();
 
                 const [error] = await to(this.performLogin(this.formData));
                 if (error) {
@@ -85,6 +82,11 @@
                 }
 
                 this.loading = false;
+            },
+
+            resetFormErrors() {
+                this.formErrors = {};
+                this.error = null;
             }
         }
     };
