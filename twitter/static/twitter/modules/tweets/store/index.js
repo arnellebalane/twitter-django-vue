@@ -13,6 +13,11 @@ const mutations = {
 };
 
 const actions = {
+    async fetchTweets({commit}) {
+        const tweets = await axios.get('/api/tweets/');
+        tweets.forEach(tweet => commit('addTweet', tweet));
+    },
+
     async createTweet({commit}, data) {
         const tweet = await axios.post('/api/tweets/', data);
         commit('addTweet', tweet);
