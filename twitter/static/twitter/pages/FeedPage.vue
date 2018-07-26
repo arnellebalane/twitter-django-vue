@@ -24,8 +24,8 @@
             return {
                 tweets: [],
                 eventBusCallbacks: {
-                    'tweets:create': this.addTweet,
-                    'tweets:delete': this.deleteTweet
+                    'tweets:actions:create': this.addTweet,
+                    'tweets:actions:delete': this.deleteTweet
                 }
             };
         },
