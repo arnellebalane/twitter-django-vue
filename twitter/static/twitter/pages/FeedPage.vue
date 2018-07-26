@@ -22,12 +22,13 @@
 
         data() {
             return {
-                tweets: [],
-                eventBusCallbacks: {
-                    'tweets:actions:create': this.addTweet,
-                    'tweets:actions:delete': this.deleteTweet
-                }
+                tweets: []
             };
+        },
+
+        eventBusCallbacks: {
+            'tweets:actions:create': 'addTweet',
+            'tweets:actions:delete': 'deleteTweet'
         },
 
         async created() {
