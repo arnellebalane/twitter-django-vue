@@ -1,24 +1,24 @@
 <template>
     <div id="app" class="app">
-        <AppNavbar />
+        <TheNavbar />
         <router-view class="app-page" />
     </div>
 </template>
 
 <script>
-    import AppNavbar from './AppNavbar.vue';
+    import TheNavbar from './TheNavbar.vue';
 
     export default {
         name: 'App',
 
         components:{
-            AppNavbar
+            TheNavbar
         }
     };
 </script>
 
 <style scoped>
-    .app-navbar {
+    .the-navbar {
         position: fixed;
         top: 0;
         left: 0;

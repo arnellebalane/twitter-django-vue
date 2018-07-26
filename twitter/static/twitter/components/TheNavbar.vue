@@ -1,5 +1,5 @@
 <template>
-    <header class="app-navbar">
+    <header class="the-navbar">
         <img src="~source/images/twitter.svg" alt="twitter logo" class="site-logo">
 
         <nav class="user-nav">
@@ -18,7 +18,7 @@
     import {mapState, mapActions} from 'vuex';
 
     export default {
-        name: 'AppNavbar',
+        name: 'TheNavbar',
 
         computed: mapState('auth', ['user']),
 
@@ -34,7 +34,7 @@
 </script>
 
 <style scoped>
-    .app-navbar {
+    .the-navbar {
         display: flex;
         align-items: center;
         height: 5rem;
