@@ -11,7 +11,12 @@ function itemType(item) {
 
 const abilities = [
     ['create', 'tweet'],
-    ['delete', 'tweet', item => item.user.id === store.state.auth.user.id]
+    ['delete', 'tweet', item => {
+        const user = store.state.auth.user;
+        return user
+            ? item.user.id === user.id
+            : false;
+    }]
 ];
 
 export default {
