@@ -14,13 +14,13 @@ const actions = {
 
     async createTweet(context, data) {
         const tweet = await axios.post('/api/tweets/', data);
-        eventBus.$emit('tweets:create', tweet);
+        eventBus.$emit('tweets:actions:create', tweet);
         return tweet;
     },
 
     async deleteTweet(context, id) {
         const tweet = await axios.delete(`/api/tweets/${id}/`);
-        eventBus.$emit('tweets:delete', id);
+        eventBus.$emit('tweets:actions:delete', id);
     }
 };
 
