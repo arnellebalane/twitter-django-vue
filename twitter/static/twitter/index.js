@@ -20,7 +20,7 @@ if (store.getters['auth/isLoggedIn']) {
     store.dispatch('auth/getCurrentUser');
 }
 
-Vue.use(EventBusCallbacks, {eventBus});
+Vue.use(EventBusCallbacks, eventBus);
 
 new Vue({
     el: '#app',
