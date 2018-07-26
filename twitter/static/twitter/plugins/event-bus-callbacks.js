@@ -1,14 +1,16 @@
-export default (Vue, {eventBus}) => {
+export default (Vue, eventBus) => {
     Vue.mixin({
         created() {
-            for (let key in this.eventBusCallbacks) {
-                eventBus.$on(key, this.eventBusCallbacks[key]);
+            const callbacks = this.$options.eventBusCallbacks;
+            for (let key in callbacks) {
+                eventBus.$on(key, this[callbacks[key]]);
             }
         },
 
         destroyed() {
-            for (let key in this.eventBusCallbacks) {
-                eventBus.$off(key, this.eventBusCallbacks[key]);
+            const callbacks = this.$options.eventBusCallbacks;
+            for (let key in callbacks) {
+                eventBus.$off(key, this[callbacks[key]]);
             }
         }
     });
