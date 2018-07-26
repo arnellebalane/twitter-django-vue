@@ -15,7 +15,7 @@
 </template>
 
 <script>
-    import {mapState, mapMutations, mapActions} from 'vuex';
+    import {mapState, mapActions} from 'vuex';
 
     export default {
         name: 'AppNavbar',
@@ -24,11 +24,9 @@
 
         methods: {
             ...mapActions('auth', ['performLogout']),
-            ...mapMutations('tweets', ['clearTweets']),
 
             onLogout() {
                 this.performLogout();
-                this.clearTweets();
                 this.$router.replace({name: 'login'});
             }
         }
