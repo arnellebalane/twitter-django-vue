@@ -2,7 +2,10 @@ import Vue from 'vue';
 import router from './router';
 import store from './store';
 import EventBusCallbacks from './plugins/event-bus-callbacks';
+import AbilitiesPlugin from './plugins/abilities';
+
 import eventBus from './lib/event-bus';
+import abilities from './lib/abilities';
 import App from './components/App.vue';
 import './stylesheets/index.css';
 
@@ -21,6 +24,7 @@ if (store.getters['auth/isLoggedIn']) {
 }
 
 Vue.use(EventBusCallbacks, eventBus);
+Vue.use(AbilitiesPlugin, abilities);
 
 new Vue({
     el: '#app',
