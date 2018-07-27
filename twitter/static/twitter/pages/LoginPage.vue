@@ -1,7 +1,7 @@
 <template>
     <div class="login-page auth-page">
         <img src="~source/images/twitter.svg" alt="twitter logo" class="site-logo">
-        <AuthLoginForm @login="onLogin" />
+        <AuthLoginForm />
     </div>
 </template>
 
@@ -13,12 +13,6 @@
 
         components: {
             AuthLoginForm
-        },
-
-        methods: {
-            onLogin() {
-                this.$router.replace({name: 'feed'});
-            }
         }
     };
 </script>

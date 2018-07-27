@@ -1,7 +1,7 @@
 <template>
     <div class="register-page auth-page">
         <img src="~source/images/twitter.svg" alt="twitter logo" class="site-logo">
-        <AuthRegisterForm @register="onRegister" />
+        <AuthRegisterForm />
     </div>
 </template>
 
@@ -13,12 +13,6 @@
 
         components: {
             AuthRegisterForm
-        },
-
-        methods: {
-            onRegister() {
-                this.$router.replace({name: 'feed'});
-            }
         }
     };
 </script>

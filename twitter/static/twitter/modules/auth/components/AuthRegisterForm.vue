@@ -109,8 +109,6 @@
                 const [error] = await to(this.performRegister(this.formData));
                 if (error) {
                     this.handleFormError(error);
-                } else {
-                    this.$emit('register');
                 }
 
                 this.loading = false;

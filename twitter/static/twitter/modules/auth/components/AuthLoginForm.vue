@@ -70,8 +70,6 @@
                 const [error] = await to(this.performLogin(this.formData));
                 if (error) {
                     this.handleFormError(error);
-                } else {
-                    this.$emit('login');
                 }
 
                 this.loading = false;
