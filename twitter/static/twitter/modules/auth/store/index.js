@@ -1,5 +1,6 @@
 import pick from 'lodash/pick';
 import axios from 'source/lib/axios';
+import router from 'source/router';
 
 const state = {
     token: localStorage.getItem('token'),
@@ -58,6 +59,7 @@ const actions = {
     performLogout({commit}) {
         commit('clearToken');
         commit('clearUser');
+        router.replace({name: 'login'});
     }
 };
 
