@@ -1,3 +1,4 @@
+import to from 'await-to-js';
 import pick from 'lodash/pick';
 import axios from 'source/lib/axios';
 import router from 'source/router';
@@ -52,8 +53,11 @@ const actions = {
         router.replace({name: 'feed'});
     },
 
-    async getCurrentUser({commit}) {
-        const user = await axios.get('/api/me/');
+    async getCurrentUser({commit, dispatch}) {
+        const [error, user] = await to(axios.get('/api/me/'));
+        if (error && error.response && error.response.status === 401) {
+            return dispatch('performLogout');
+        }
         commit('setUser', user);
     },
 
