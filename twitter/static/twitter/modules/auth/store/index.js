@@ -49,6 +49,7 @@ const actions = {
         commit('setToken', token);
 
         await dispatch('getCurrentUser');
+        router.replace({name: 'feed'});
     },
 
     async getCurrentUser({commit}) {
