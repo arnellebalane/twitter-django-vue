@@ -4,7 +4,7 @@
 
         <nav class="user-nav">
             <template v-if="user">
-                <img :src="user.avatar_url" :alt="user.fullname" class="user-avatar" @click="onLogout">
+                <img :src="user.avatar_url" :alt="user.fullname" class="user-avatar" @click="performLogout">
             </template>
             <template v-else>
                 <router-link :to="{name: 'login'}">Login</router-link>
@@ -22,14 +22,7 @@
 
         computed: mapState('auth', ['user']),
 
-        methods: {
-            ...mapActions('auth', ['performLogout']),
-
-            onLogout() {
-                this.performLogout();
-                this.$router.replace({name: 'login'});
-            }
-        }
+        methods: mapActions('auth', ['performLogout'])
     };
 </script>
 
