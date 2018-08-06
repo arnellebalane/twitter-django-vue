@@ -24,6 +24,13 @@ const routes = [{
     meta: {
         loginRequired: false
     }
+}, {
+    path: '/:username',
+    component: () => import('source/pages/ProfilePage.vue'),
+    name: 'profile',
+    meta: {
+        loginRequired: true
+    }
 }];
 
 const router = new VueRouter({
