@@ -9,6 +9,7 @@
 <script>
     import {mapActions} from 'vuex';
     import TweetList from 'source/modules/tweets/components/TweetList.vue';
+    import TweetFeedMixin from 'source/mixins/TweetFeedMixin';
 
     export default {
         name: 'ProfilePage',
@@ -17,6 +18,8 @@
             TweetList
         },
 
+        mixins: [TweetFeedMixin],
+
         props: {
             username: {
                 type: String,
@@ -24,36 +27,12 @@
             }
         },
 
-        data() {
-            return {
-                tweets: []
-            };
-        },
-
-        eventBusCallbacks: {
-            'tweets:actions:create': 'addTweet',
-            'tweets:actions:delete': 'deleteTweet'
-        },
-
         async created() {
             const tweets = await this.fetchUserTweets(this.username);
             tweets.forEach(this.addTweet);
         },
 
-        methods: {
-            ...mapActions('tweets', ['fetchUserTweets']),
-
-            addTweet(tweet) {
-                if (!tweet.user.avatar_url) {
-                    tweet.user.avatar_url = require('source/images/default-avatar.png');
-                }
-                this.tweets = [tweet, ...this.tweets];
-            },
-
-            deleteTweet(id) {
-                this.tweets = this.tweets.filter(tweet => tweet.id !== id);
-            }
-        }
+        methods: mapActions('tweets', ['fetchUserTweets'])
     };
 </script>
 

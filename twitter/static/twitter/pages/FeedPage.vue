@@ -11,6 +11,7 @@
     import {mapActions} from 'vuex';
     import TweetForm from 'source/modules/tweets/components/TweetForm.vue';
     import TweetList from 'source/modules/tweets/components/TweetList.vue';
+    import TweetFeedMixin from 'source/mixins/TweetFeedMixin';
 
     export default {
         name: 'FeedPage',
@@ -20,36 +21,14 @@
             TweetList
         },
 
-        data() {
-            return {
-                tweets: []
-            };
-        },
-
-        eventBusCallbacks: {
-            'tweets:actions:create': 'addTweet',
-            'tweets:actions:delete': 'deleteTweet'
-        },
+        mixins: [TweetFeedMixin],
 
         async created() {
             const tweets = await this.fetchTweets();
             tweets.forEach(this.addTweet);
         },
 
-        methods: {
-            ...mapActions('tweets', ['fetchTweets']),
-
-            addTweet(tweet) {
-                if (!tweet.user.avatar_url) {
-                    tweet.user.avatar_url = require('source/images/default-avatar.png');
-                }
-                this.tweets = [tweet, ...this.tweets];
-            },
-
-            deleteTweet(id) {
-                this.tweets = this.tweets.filter(tweet => tweet.id !== id);
-            }
-        }
+        methods: mapActions('tweets', ['fetchTweets'])
     };
 </script>
 
