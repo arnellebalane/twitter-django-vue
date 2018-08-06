@@ -4,7 +4,7 @@
 
         <div class="content">
             <header class="content-header">
-                <router-link :to="{name: 'feed'}">
+                <router-link :to="{name: 'profile', params: {username: tweet.user.username}}">
                     <h2>
                         <span class="fullname">{{ tweet.user.fullname }}</span>
                         <span class="username">@{{ tweet.user.username }}</span>
