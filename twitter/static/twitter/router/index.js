@@ -28,6 +28,7 @@ const routes = [{
     path: '/:username',
     component: () => import('source/pages/ProfilePage.vue'),
     name: 'profile',
+    props: true,
     meta: {
         loginRequired: true
     }
