@@ -1,6 +1,8 @@
 <template>
     <header class="the-navbar">
-        <img src="~source/images/twitter.svg" alt="twitter logo" class="site-logo">
+        <router-link :to="{name: 'feed'}">
+            <img src="~source/images/twitter.svg" alt="twitter logo" class="site-logo">
+        </router-link>
 
         <nav class="user-nav">
             <template v-if="user">
@@ -34,6 +36,10 @@
         padding: 0 2.4rem;
         border-bottom: 1px solid var(--gray-3);
         background-color: #fff;
+    }
+
+    .site-logo {
+        display: block;
     }
 
     .user-nav {
