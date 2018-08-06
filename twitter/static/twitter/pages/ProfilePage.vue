@@ -1,6 +1,7 @@
 <template>
     <div class="profile-page">
         <div class="wrapper">
+            <ProfileSidebar :username="username" />
             <TweetList :tweets="tweets" />
         </div>
     </div>
@@ -8,6 +9,7 @@
 
 <script>
     import {mapActions} from 'vuex';
+    import ProfileSidebar from 'source/modules/profiles/components/ProfileSidebar.vue';
     import TweetList from 'source/modules/tweets/components/TweetList.vue';
     import TweetFeedMixin from 'source/mixins/TweetFeedMixin';
 
@@ -15,6 +17,7 @@
         name: 'ProfilePage',
 
         components: {
+            ProfileSidebar,
             TweetList
         },
 
@@ -42,5 +45,12 @@
         max-width: 60rem;
         padding: 1.2rem 0;
         margin: 0 auto;
+        position: relative;
+    }
+
+    .profile-sidebar {
+        width: 18rem;
+        position: absolute;
+        left: -24rem;
     }
 </style>
