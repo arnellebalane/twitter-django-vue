@@ -12,6 +12,10 @@ const actions = {
         return axios.get('/api/tweets/');
     },
 
+    fetchUserTweets(context, username) {
+        return axios.get(`/api/users/${username}/tweets/`);
+    },
+
     async createTweet(context, data) {
         const tweet = await axios.post('/api/tweets/', data);
         eventBus.$emit('tweets:actions:create', tweet);
