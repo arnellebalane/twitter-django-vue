@@ -47,6 +47,14 @@ class UserTweetsView(APIView):
         return Response(serializer.data)
 
 
+class ProfileView(APIView):
+
+    def get(self, request, username):
+        profile = Profile.objects.get(user__username=username)
+        serializer = ProfileSerializer(profile)
+        return Response(serializer.data)
+
+
 class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
