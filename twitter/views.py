@@ -39,6 +39,14 @@ class CurrentUserView(APIView):
         return Response(serializer.data)
 
 
+class UserTweetsView(APIView):
+
+    def get(self, request, username):
+        tweets = Tweet.objects.filter(user__username=username)
+        serializer = TweetSerializer(tweets, many=True)
+        return Response(serializer.data)
+
+
 class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
