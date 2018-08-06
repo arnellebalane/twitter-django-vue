@@ -4,7 +4,9 @@ const instance = axios.create({
     baseURL: window.location.origin,
     headers: {
         'X-Requested-With': 'XMLHttpRequest'
-    }
+    },
+    xsrfCookieName: 'csrftoken',
+    xsrfHeaderName: 'X-CSRFToken'
 });
 
 instance.interceptors.response.use(
