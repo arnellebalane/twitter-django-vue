@@ -32,6 +32,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('api/me/', views.CurrentUserView.as_view()),
+    path('api/users/<str:username>/', views.ProfileView.as_view()),
     path('api/users/<str:username>/tweets/',
          views.UserTweetsView.as_view()),
     path('api-auth/', include('rest_framework.urls')),
